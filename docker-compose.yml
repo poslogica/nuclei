@@ -1,7 +1,13 @@
 # Long-lived idle container; scans run via `docker compose exec nuclei nuclei <args>`.
 services:
   nuclei:
-    image: projectdiscovery/nuclei:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ALPINE_BASE: basewarden-alpine:local
+        GO_BASE: basewarden-golang:local
+    image: nuclei:local
     container_name: nuclei
     entrypoint: ["tail", "-f", "/dev/null"]
     restart: unless-stopped        # survives Docker restarts / reboots
