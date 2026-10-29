@@ -3,11 +3,11 @@ services:
   nuclei:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.slim
       args:
         ALPINE_BASE: basewarden-alpine:local
         GO_BASE: basewarden-golang:local
-    image: nuclei:local
+    image: nuclei:slim
     container_name: nuclei
     entrypoint: ["tail", "-f", "/dev/null"]
     restart: unless-stopped        # survives Docker restarts / reboots

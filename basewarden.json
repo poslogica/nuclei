@@ -16,8 +16,8 @@
     "GO_BASE": "basewarden-golang:local"
   },
   "images": [
-    {"Name": "nuclei", "Dockerfile": "Dockerfile", "Tag": "nuclei:local", "Context": ".",
-     "Services": {"compose": ["nuclei"]}},
-    {"Name": "nuclei-slim", "Dockerfile": "Dockerfile.slim", "Tag": "nuclei:slim", "Context": "."}
+    {"Name": "nuclei", "Dockerfile": "Dockerfile", "Tag": "nuclei:local", "Context": "."},
+    {"Name": "nuclei-slim", "Dockerfile": "Dockerfile.slim", "Tag": "nuclei:slim", "Context": ".",
+     "Services": {"compose": ["nuclei"]}}
   ]
 }
