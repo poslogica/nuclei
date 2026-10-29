@@ -1,0 +1,22 @@
+{
+  "project": "nuclei",
+  "github": "poslogica/nuclei",
+  "forkRoot": "..",
+  "targets": {
+    "compose": {"file": "docker-compose.yml", "project": "nuclei"}
+  },
+  "patchWindow": "iso-week",
+  "uses": {
+    "debian": {},
+    "alpine": {},
+    "golang": {}
+  },
+  "baseArgs": {
+    "ALPINE_BASE": "basewarden-alpine:local",
+    "GO_BASE": "basewarden-golang:local"
+  },
+  "images": [
+    {"Dockerfile": "Dockerfile", "Tag": "nuclei:local", "Context": ".",
+     "Services": {"compose": ["nuclei"]}}
+  ]
+}
