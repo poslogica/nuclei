@@ -57,3 +57,5 @@ vendor
 *.trace
 *.mem
 *.cpu
+# basewarden scan output
+security/reports/
