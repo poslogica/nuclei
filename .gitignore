@@ -30,6 +30,8 @@
 /scrapefuncs
 /tsgen
 *.test
+scans.log.jsonl*
+__pycache__
 
 # Templates
 /*.yaml

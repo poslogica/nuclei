@@ -1,5 +1,8 @@
+ARG ALPINE_BASE=alpine:latest
+ARG GO_BASE=golang:1.27-alpine
+
 # Build
-FROM golang:1.27-alpine AS builder
+FROM ${GO_BASE} AS builder
 
 RUN apk add build-base
 WORKDIR /app
@@ -8,7 +11,7 @@ RUN make verify
 RUN make build
 
 # Release
-FROM alpine:latest
+FROM ${ALPINE_BASE}
 
 RUN apk add --no-cache bind-tools chromium ca-certificates
 COPY --from=builder /app/bin/nuclei /usr/local/bin/
