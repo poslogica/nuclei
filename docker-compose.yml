@@ -1,0 +1,26 @@
+# Long-lived idle container; scans run via `docker compose exec nuclei nuclei <args>`.
+services:
+  nuclei:
+    image: projectdiscovery/nuclei:latest
+    container_name: nuclei
+    entrypoint: ["tail", "-f", "/dev/null"]
+    restart: unless-stopped        # survives Docker restarts / reboots
+    logging:
+      driver: local
+      options:
+        max-size: "10m"
+        max-file: "3"
+    volumes:
+      - nuclei-data:/root          # templates + config persist
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks:
+      - default
+      - firecrawl_backend
+
+volumes:
+  nuclei-data:
+
+networks:
+  firecrawl_backend:
+    external: true
